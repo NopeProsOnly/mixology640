@@ -12,13 +12,13 @@
         :root {
             --gold: #D4AF37;
             --dark: #050505;
-            --neon: #ff003c;
         }
 
         body {
             background-color: var(--dark);
             color: white;
             font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, .serif {
@@ -28,19 +28,14 @@
         /* Liquid Motion Background */
         .liquid-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            overflow: hidden;
             background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
         }
 
         .blob {
             position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 500px; height: 500px;
             background: linear-gradient(45deg, rgba(212, 175, 55, 0.05), rgba(255, 0, 60, 0.05));
             filter: blur(80px);
             border-radius: 50%;
@@ -53,43 +48,35 @@
         }
 
         .glass-nav {
-            background: rgba(5, 5, 5, 0.8);
+            background: rgba(5, 5, 5, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .gold-gradient-text {
-            background: linear-gradient(to right, #D4AF37, #FBF0AD, #D4AF37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Mobile Menu Styling */
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
         }
 
         .recipe-card {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .recipe-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-        }
-
         .btn-gold {
             background: var(--gold);
             color: black;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-gold:hover {
             background: #f1c40f;
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-        }
-
-        /* Hide elements for filtering */
-        .hidden-item {
-            display: none;
-            opacity: 0;
         }
     </style>
 </head>
@@ -102,37 +89,55 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="glass-nav fixed w-full z-50 px-6 py-4">
+    <nav class="glass-nav fixed w-full z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="#" class="text-2xl font-bold tracking-tighter uppercase">
                 Mixology<span class="text-[var(--gold)]">640</span>
             </a>
+            
+            <!-- Desktop Links -->
             <div class="hidden md:flex space-x-8 text-xs tracking-[0.3em] uppercase font-semibold">
                 <a href="#recipes" class="hover:text-[var(--gold)] transition">Recipes</a>
                 <a href="#tutorials" class="hover:text-[var(--gold)] transition">Tutorials</a>
                 <a href="#tools" class="hover:text-[var(--gold)] transition">Shop</a>
                 <a href="#booking" class="hover:text-[var(--gold)] transition">Booking</a>
             </div>
-            <button class="md:hidden text-white">
-                <i data-lucide="menu"></i>
+
+            <!-- Hamburger Button -->
+            <button id="menu-toggle" class="md:hidden text-white p-2 relative z-[110]">
+                <i data-lucide="menu" id="menu-icon"></i>
+                <i data-lucide="x" id="close-icon" class="hidden"></i>
             </button>
         </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[#050505] z-[105] flex flex-col items-center justify-center space-y-10 text-center md:hidden">
+        <a href="#recipes" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Recipes</a>
+        <a href="#tutorials" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Tutorials</a>
+        <a href="#tools" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Shop</a>
+        <a href="#booking" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Booking</a>
+        
+        <div class="flex space-x-6 pt-10">
+            <i data-lucide="instagram" class="text-gray-500"></i>
+            <i data-lucide="youtube" class="text-gray-500"></i>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section class="h-screen flex items-center justify-center text-center px-4 relative overflow-hidden">
+    <section class="h-screen flex items-center justify-center text-center px-4 relative">
         <div class="relative z-10">
-            <span class="text-[var(--gold)] tracking-[0.5em] uppercase text-sm mb-4 block animate-pulse">Elevated Spirits</span>
+            <span class="text-[var(--gold)] tracking-[0.5em] uppercase text-xs mb-4 block">Elevated Spirits</span>
             <h1 class="text-6xl md:text-9xl font-bold mb-8 italic">The Art of the Pour</h1>
             <p class="max-w-xl mx-auto text-gray-400 text-lg mb-10 font-light leading-relaxed">
-                Master the craft of high-end mixology from your own home bar. Professional techniques, curated spirits, and the science of flavor.
+                Master the craft of high-end mixology. Professional techniques and the science of flavor.
             </p>
             <div class="flex flex-col md:flex-row items-center justify-center gap-4">
-                <a href="#recipes" class="btn-gold px-10 py-4 uppercase tracking-widest font-bold text-sm w-full md:w-auto">
-                    Watch Latest Recipes
+                <a href="#recipes" class="btn-gold px-10 py-4 uppercase tracking-widest font-bold text-sm w-64 md:w-auto text-center">
+                    Latest Recipes
                 </a>
-                <a href="#booking" class="border border-white/20 hover:border-[var(--gold)] px-10 py-4 uppercase tracking-widest font-bold text-sm transition w-full md:w-auto backdrop-blur-sm">
-                    Book an Event
+                <a href="#booking" class="border border-white/20 hover:border-[var(--gold)] px-10 py-4 uppercase tracking-widest font-bold text-sm transition w-64 md:w-auto backdrop-blur-sm text-center">
+                    Book Event
                 </a>
             </div>
         </div>
@@ -140,13 +145,13 @@
 
     <!-- Recipe Gallery Section -->
     <section id="recipes" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <div>
-                <h2 class="text-5xl mb-4">The Collection</h2>
-                <div class="h-1 w-20 bg-[var(--gold)]"></div>
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
+            <div class="w-full md:w-auto">
+                <h2 class="text-5xl mb-4 italic">The Collection</h2>
+                <div class="h-1 w-20 bg-[var(--gold)] mx-auto md:mx-0"></div>
             </div>
             
-            <div class="flex flex-wrap gap-4 text-xs tracking-widest uppercase font-bold">
+            <div class="flex flex-wrap justify-center gap-6 text-xs tracking-widest uppercase font-bold w-full md:w-auto">
                 <button onclick="filterRecipes('all')" class="filter-btn text-[var(--gold)] border-b border-[var(--gold)] pb-1">All</button>
                 <button onclick="filterRecipes('tequila')" class="filter-btn text-gray-500 hover:text-white transition pb-1">Tequila</button>
                 <button onclick="filterRecipes('bourbon')" class="filter-btn text-gray-500 hover:text-white transition pb-1">Bourbon</button>
@@ -155,179 +160,90 @@
         </div>
 
         <div id="recipe-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Recipe 1 -->
-            <div class="recipe-card group relative h-[500px] border border-white/10 overflow-hidden bg-black" data-spirit="bourbon">
-                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800" alt="Cocktail" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-80 transition duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="recipe-card group relative h-[500px] border border-white/10 overflow-hidden" data-spirit="bourbon">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div class="absolute bottom-0 p-8 w-full">
-                    <span class="text-[var(--gold)] text-xs tracking-widest uppercase mb-2 block">Bourbon</span>
-                    <h3 class="text-3xl mb-4 italic">Smoked Maple Old Fashioned</h3>
-                    <button class="text-white border-b border-white/30 pb-1 text-sm flex items-center gap-2 group-hover:border-[var(--gold)] group-hover:text-[var(--gold)] transition">
-                        View Recipe <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
+                    <span class="text-[var(--gold)] text-xs tracking-widest uppercase">Bourbon</span>
+                    <h3 class="text-3xl mb-4 italic">Smoked Old Fashioned</h3>
                 </div>
             </div>
-
-            <!-- Recipe 2 -->
-            <div class="recipe-card group relative h-[500px] border border-white/10 overflow-hidden bg-black" data-spirit="tequila">
-                <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&q=80&w=800" alt="Cocktail" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-80 transition duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="recipe-card group relative h-[500px] border border-white/10 overflow-hidden" data-spirit="tequila">
+                <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div class="absolute bottom-0 p-8 w-full">
-                    <span class="text-[var(--gold)] text-xs tracking-widest uppercase mb-2 block">Tequila</span>
+                    <span class="text-[var(--gold)] text-xs tracking-widest uppercase">Tequila</span>
                     <h3 class="text-3xl mb-4 italic">Midnight Paloma</h3>
-                    <button class="text-white border-b border-white/30 pb-1 text-sm flex items-center gap-2 group-hover:border-[var(--gold)] group-hover:text-[var(--gold)] transition">
-                        View Recipe <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
                 </div>
             </div>
-
-            <!-- Recipe 3 -->
-            <div class="recipe-card group relative h-[500px] border border-white/10 overflow-hidden bg-black" data-spirit="gin">
-                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&q=80&w=800" alt="Cocktail" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-80 transition duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="recipe-card group relative h-[500px] border border-white/10 overflow-hidden" data-spirit="gin">
+                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div class="absolute bottom-0 p-8 w-full">
-                    <span class="text-[var(--gold)] text-xs tracking-widest uppercase mb-2 block">Gin</span>
-                    <h3 class="text-3xl mb-4 italic">Botanical Garden Fizz</h3>
-                    <button class="text-white border-b border-white/30 pb-1 text-sm flex items-center gap-2 group-hover:border-[var(--gold)] group-hover:text-[var(--gold)] transition">
-                        View Recipe <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
+                    <span class="text-[var(--gold)] text-xs tracking-widest uppercase">Gin</span>
+                    <h3 class="text-3xl mb-4 italic">Botanical Fizz</h3>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Integration Section -->
-    <section id="tutorials" class="py-24 bg-[#0a0a0a]">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-4xl mb-12 italic">Visual Guides</h2>
-            <div class="relative aspect-video w-full border-4 border-white/5 shadow-2xl overflow-hidden group">
-                <!-- Use a Placeholder for Video - Replace with actual YouTube Embed -->
-                <div class="absolute inset-0 flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40">
-                    <button class="w-20 h-20 rounded-full bg-[var(--gold)] flex items-center justify-center transition transform group-hover:scale-110 shadow-lg">
-                        <i data-lucide="play" class="text-black fill-black ml-1"></i>
-                    </button>
-                </div>
-                <div class="absolute bottom-6 left-6 text-left">
-                    <p class="text-[var(--gold)] uppercase tracking-widest text-xs mb-1">Latest Masterclass</p>
-                    <h3 class="text-xl font-bold">How to Clear Ice at Home</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tools of the Trade -->
-    <section id="tools" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 class="text-5xl mb-6">Tools of <br/> the Trade</h2>
-                <p class="text-gray-400 mb-10 leading-relaxed">Quality cocktails require precision instruments. These are the exact tools used in the Mixology640 studio for every pour.</p>
-                
-                <div class="space-y-6">
-                    <div class="flex items-center justify-between p-6 border border-white/5 bg-white/5 hover:border-[var(--gold)] transition cursor-pointer group">
-                        <div class="flex items-center gap-4">
-                            <i data-lucide="shield-check" class="text-[var(--gold)]"></i>
-                            <div>
-                                <h4 class="font-bold">Seamless Mixing Glass</h4>
-                                <p class="text-xs text-gray-500 uppercase">Yarai Pattern • 500ml</p>
-                            </div>
-                        </div>
-                        <span class="text-[var(--gold)] group-hover:translate-x-2 transition">Shop →</span>
-                    </div>
-
-                    <div class="flex items-center justify-between p-6 border border-white/5 bg-white/5 hover:border-[var(--gold)] transition cursor-pointer group">
-                        <div class="flex items-center gap-4">
-                            <i data-lucide="thermometer" class="text-[var(--gold)]"></i>
-                            <div>
-                                <h4 class="font-bold">Weighted Shaker Tin</h4>
-                                <p class="text-xs text-gray-500 uppercase">18/8 Stainless Steel</p>
-                            </div>
-                        </div>
-                        <span class="text-[var(--gold)] group-hover:translate-x-2 transition">Shop →</span>
-                    </div>
-
-                    <div class="flex items-center justify-between p-6 border border-white/5 bg-white/5 hover:border-[var(--gold)] transition cursor-pointer group">
-                        <div class="flex items-center gap-4">
-                            <i data-lucide="scissors" class="text-[var(--gold)]"></i>
-                            <div>
-                                <h4 class="font-bold">Japanese Precision Jigger</h4>
-                                <p class="text-xs text-gray-500 uppercase">1oz / 2oz Measurements</p>
-                            </div>
-                        </div>
-                        <span class="text-[var(--gold)] group-hover:translate-x-2 transition">Shop →</span>
-                    </div>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -inset-10 bg-[var(--gold)]/10 blur-[100px] rounded-full"></div>
-                <img src="https://images.unsplash.com/photo-1597075091918-40b2bf88eb56?auto=format&fit=crop&q=80&w=800" alt="Barware" class="relative z-10 w-full rounded-sm grayscale hover:grayscale-0 transition duration-1000">
             </div>
         </div>
     </section>
 
     <!-- Booking / Contact -->
-    <section id="booking" class="py-24 px-6 bg-[#050505]">
-        <div class="max-w-3xl mx-auto border border-white/10 p-12 relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-[var(--gold)]/5 blur-3xl"></div>
-            <div class="text-center mb-12">
-                <h2 class="text-4xl italic mb-4">Book an Experience</h2>
-                <p class="text-gray-500 uppercase tracking-widest text-xs">Private Events • Brand Collaboration • Consulting</p>
-            </div>
-            
-            <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-2">
-                    <label class="text-xs uppercase tracking-tighter text-gray-500">Name</label>
-                    <input type="text" class="w-full bg-transparent border-b border-white/20 py-2 outline-none focus:border-[var(--gold)] transition">
-                </div>
-                <div class="space-y-2">
-                    <label class="text-xs uppercase tracking-tighter text-gray-500">Email</label>
-                    <input type="email" class="w-full bg-transparent border-b border-white/20 py-2 outline-none focus:border-[var(--gold)] transition">
-                </div>
-                <div class="md:col-span-2 space-y-2">
-                    <label class="text-xs uppercase tracking-tighter text-gray-500">Inquiry Type</label>
-                    <select class="w-full bg-transparent border-b border-white/20 py-2 outline-none focus:border-[var(--gold)] transition appearance-none text-white">
-                        <option class="bg-black">Brand Collaboration</option>
-                        <option class="bg-black">Private Event</option>
-                        <option class="bg-black">Content Creation</option>
-                    </select>
-                </div>
-                <div class="md:col-span-2 space-y-2">
-                    <label class="text-xs uppercase tracking-tighter text-gray-500">Message</label>
-                    <textarea rows="4" class="w-full bg-transparent border-b border-white/20 py-2 outline-none focus:border-[var(--gold)] transition"></textarea>
-                </div>
-                <button type="submit" class="md:col-span-2 btn-gold py-4 font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-3">
-                    Submit Inquiry <i data-lucide="send" class="w-4 h-4"></i>
-                </button>
+    <section id="booking" class="py-24 px-6">
+        <div class="max-w-3xl mx-auto border border-white/10 p-8 md:p-12 bg-white/5">
+            <h2 class="text-4xl italic mb-8 text-center">Inquiry</h2>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <input type="text" placeholder="NAME" class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition">
+                <input type="email" placeholder="EMAIL" class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition">
+                <textarea placeholder="MESSAGE" class="md:col-span-2 bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] h-32 transition"></textarea>
+                <button type="submit" class="md:col-span-2 btn-gold py-4 font-bold uppercase tracking-widest text-sm">Send Message</button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-white/5">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-2xl font-bold tracking-tighter uppercase">
-                Mixology<span class="text-[var(--gold)]">640</span>
-            </div>
-            <div class="flex space-x-6">
-                <a href="#" class="hover:text-[var(--gold)] transition"><i data-lucide="instagram"></i></a>
-                <a href="#" class="hover:text-[var(--gold)] transition"><i data-lucide="youtube"></i></a>
-                <a href="#" class="hover:text-[var(--gold)] transition"><i data-lucide="twitter"></i></a>
-            </div>
-            <div class="text-[10px] text-gray-600 uppercase tracking-[0.4em]">
-                &copy; 2024 Mixology640. All Rights Reserved.
-            </div>
-        </div>
+    <footer class="py-12 text-center border-t border-white/5">
+        <p class="text-[10px] text-gray-600 uppercase tracking-[0.4em]">&copy; 2024 Mixology640. Drink Responsibly.</p>
     </footer>
 
     <script>
         // Initialize Icons
         lucide.createIcons();
 
-        // Recipe Filtering Logic
+        // --- MOBILE MENU LOGIC ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            const isOpen = mobileMenu.classList.toggle('active');
+            
+            // Toggle Icons
+            menuIcon.classList.toggle('hidden', isOpen);
+            closeIcon.classList.toggle('hidden', !isOpen);
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // --- RECIPE FILTERING ---
         function filterRecipes(category) {
             const cards = document.querySelectorAll('.recipe-card');
             const buttons = document.querySelectorAll('.filter-btn');
 
-            // Update button styles
             buttons.forEach(btn => {
                 if (btn.innerText.toLowerCase() === category) {
                     btn.classList.add('text-[var(--gold)]', 'border-b', 'border-[var(--gold)]');
@@ -338,7 +254,6 @@
                 }
             });
 
-            // Filter cards
             cards.forEach(card => {
                 card.style.opacity = '0';
                 setTimeout(() => {
@@ -351,22 +266,6 @@
                 }, 300);
             });
         }
-
-        // Form Submit Simulation
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Your request has been sent to the Mixology640 studio. Cheers!');
-        });
-
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.padding = '1rem 1.5rem';
-            } else {
-                nav.style.padding = '1.5rem 1.5rem';
-            }
-        });
     </script>
 </body>
 </html>
