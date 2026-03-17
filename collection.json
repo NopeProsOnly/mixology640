@@ -6,21 +6,21 @@
         "Description": "A classic with a modern, Irish twist."
     },
     {
-        "Name": "Smoked Old Fashioned",
-        "Type": "Bourbon",
-        "Image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800",
-        "Description": "A classic with a modern, smoky twist."
+        "Name": "Plum Reckoning",
+        "Type": "Rum",
+        "Image": "resources/plum_reckoning.png",
+        "Description": "A rich and complex rum cocktail with notes of plum and spice."
     },
     {
-        "Name": "Midnight Paloma",
+        "Name": "Nutty Highland Sour",
+        "Type": "Liqueur",
+        "Image": "resources/nutty_highland_sour.png",
+        "Description": "A silky blend of honeyed Drambuie and toasted hazelnut."
+    },
+    {
+        "Name": "Coconut Margarita",
         "Type": "Tequila",
-        "Image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&q=80&w=800",
-        "Description": "Dark, refreshing, and mysteriously balanced."
-    },
-    {
-        "Name": "Botanical Fizz",
-        "Type": "Gin",
-        "Image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&q=80&w=800",
-        "Description": "Light, herbal, and powerfully aromatic."
+        "Image": "resources/coconut_margarita.png",
+        "Description": "A vibrant pink margarita with a festive coconut-flake rim."
     }
 ]
