@@ -1,85 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mixology640 | The Art of the Pour</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <style>
-        :root {
-            --gold: #D4AF37;
-            --dark: #050505;
-        }
 
-        body {
-            background-color: var(--dark);
-            color: white;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Liquid Motion Background */
-        .liquid-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
-        }
-
-        .blob {
-            position: absolute;
-            width: 500px; height: 500px;
-            background: linear-gradient(45deg, rgba(212, 175, 55, 0.05), rgba(255, 0, 60, 0.05));
-            filter: blur(80px);
-            border-radius: 50%;
-            animation: move 20s infinite alternate;
-        }
-
-        @keyframes move {
-            from { transform: translate(-10%, -10%) scale(1); }
-            to { transform: translate(20%, 20%) scale(1.2); }
-        }
-
-        .glass-nav {
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        /* Mobile Menu Styling */
-        #mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        #mobile-menu.active {
-            transform: translateX(0);
-        }
-
-        .recipe-card {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn-gold {
-            background: var(--gold);
-            color: black;
-            transition: all 0.3s ease;
-        }
-
-        .btn-gold:hover {
-            background: #f1c40f;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <!-- Liquid Background Elements -->
@@ -94,35 +28,36 @@
             <a href="#" class="text-2xl font-bold tracking-tighter uppercase">
                 Mixology<span class="text-[var(--gold)]">640</span>
             </a>
-            
+
             <!-- Desktop Links -->
             <div class="hidden md:flex space-x-8 text-xs tracking-[0.3em] uppercase font-semibold">
                 <a href="#recipes" class="hover:text-[var(--gold)] transition">Recipes</a>
                 <a href="#tutorials" class="hover:text-[var(--gold)] transition">Tutorials</a>
-                <a href="#tools" class="hover:text-[var(--gold)] transition">Shop</a>
                 <a href="#booking" class="hover:text-[var(--gold)] transition">Booking</a>
             </div>
 
             <!-- Hamburger Button -->
-            <button id="menu-toggle" class="md:hidden text-white p-2 relative z-[110]">
-                <i data-lucide="menu" id="menu-icon"></i>
-                <i data-lucide="x" id="close-icon" class="hidden"></i>
+            <button id="menu-toggle"
+                class="md:hidden text-white p-2 relative z-[110] w-10 h-10 flex items-center justify-center group focus:outline-none">
+                <div class="relative w-6 h-6 transform transition-all duration-300 origin-center" id="icon-container">
+                    <i data-lucide="menu" id="menu-icon"
+                        class="absolute inset-0 transition-all duration-300 opacity-100 rotate-0 scale-100"></i>
+                    <i data-lucide="x" id="close-icon"
+                        class="absolute inset-0 transition-all duration-300 opacity-0 -rotate-90 scale-50"></i>
+                </div>
             </button>
         </div>
-    </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-[#050505] z-[105] flex flex-col items-center justify-center space-y-10 text-center md:hidden">
-        <a href="#recipes" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Recipes</a>
-        <a href="#tutorials" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Tutorials</a>
-        <a href="#tools" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Shop</a>
-        <a href="#booking" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Booking</a>
-        
-        <div class="flex space-x-6 pt-10">
-            <i data-lucide="instagram" class="text-gray-500"></i>
-            <i data-lucide="youtube" class="text-gray-500"></i>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed top-0 left-0 w-full h-screen bg-[#050505] z-[105] flex flex-col items-center justify-center space-y-10 text-center md:hidden">
+            <a href="#recipes" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Recipes</a>
+            <a href="#tutorials" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Tutorials</a>
+            <a href="#booking" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Booking</a>
+
+            <!-- Removed Social Links -->
         </div>
-    </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="h-screen flex items-center justify-center text-center px-4 relative">
@@ -133,10 +68,12 @@
                 Master the craft of high-end mixology. Professional techniques and the science of flavor.
             </p>
             <div class="flex flex-col md:flex-row items-center justify-center gap-4">
-                <a href="#recipes" class="btn-gold px-10 py-4 uppercase tracking-widest font-bold text-sm w-64 md:w-auto text-center">
+                <a href="#recipes"
+                    class="btn-gold px-10 py-4 uppercase tracking-widest font-bold text-sm w-64 md:w-auto text-center">
                     Latest Recipes
                 </a>
-                <a href="#booking" class="border border-white/20 hover:border-[var(--gold)] px-10 py-4 uppercase tracking-widest font-bold text-sm transition w-64 md:w-auto backdrop-blur-sm text-center">
+                <a href="#booking"
+                    class="border border-white/20 hover:border-[var(--gold)] px-10 py-4 uppercase tracking-widest font-bold text-sm transition w-64 md:w-auto backdrop-blur-sm text-center">
                     Book Event
                 </a>
             </div>
@@ -150,122 +87,115 @@
                 <h2 class="text-5xl mb-4 italic">The Collection</h2>
                 <div class="h-1 w-20 bg-[var(--gold)] mx-auto md:mx-0"></div>
             </div>
-            
-            <div class="flex flex-wrap justify-center gap-6 text-xs tracking-widest uppercase font-bold w-full md:w-auto">
-                <button onclick="filterRecipes('all')" class="filter-btn text-[var(--gold)] border-b border-[var(--gold)] pb-1">All</button>
-                <button onclick="filterRecipes('tequila')" class="filter-btn text-gray-500 hover:text-white transition pb-1">Tequila</button>
-                <button onclick="filterRecipes('bourbon')" class="filter-btn text-gray-500 hover:text-white transition pb-1">Bourbon</button>
-                <button onclick="filterRecipes('gin')" class="filter-btn text-gray-500 hover:text-white transition pb-1">Gin</button>
+
+            <div class="relative w-full md:w-auto flex justify-center md:justify-end mt-4 md:mt-0">
+                <div
+                    class="relative grid items-center text-xs tracking-[0.2em] uppercase font-bold text-[var(--gold)] border-b border-[var(--gold)] pb-2">
+                    <select id="recipe-filter"
+                        class="col-start-1 row-start-1 w-full h-full bg-transparent outline-none appearance-none cursor-pointer z-10 pr-6">
+                        <option value="all" class="bg-[var(--dark)] text-white">ALL</option>
+                    </select>
+                    <span id="recipe-filter-sizer"
+                        class="col-start-1 row-start-1 opacity-0 pointer-events-none pr-6 whitespace-nowrap"
+                        aria-hidden="true">ALL</span>
+                    <i data-lucide="chevron-down"
+                        class="col-start-1 row-start-1 justify-self-end w-4 h-4 pointer-events-none z-0"></i>
+                </div>
             </div>
         </div>
 
         <div id="recipe-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="recipe-card group relative h-[500px] border border-white/10 overflow-hidden" data-spirit="bourbon">
-                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                <div class="absolute bottom-0 p-8 w-full">
-                    <span class="text-[var(--gold)] text-xs tracking-widest uppercase">Bourbon</span>
-                    <h3 class="text-3xl mb-4 italic">Smoked Old Fashioned</h3>
-                </div>
-            </div>
-            <div class="recipe-card group relative h-[500px] border border-white/10 overflow-hidden" data-spirit="tequila">
-                <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                <div class="absolute bottom-0 p-8 w-full">
-                    <span class="text-[var(--gold)] text-xs tracking-widest uppercase">Tequila</span>
-                    <h3 class="text-3xl mb-4 italic">Midnight Paloma</h3>
-                </div>
-            </div>
-            <div class="recipe-card group relative h-[500px] border border-white/10 overflow-hidden" data-spirit="gin">
-                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                <div class="absolute bottom-0 p-8 w-full">
-                    <span class="text-[var(--gold)] text-xs tracking-widest uppercase">Gin</span>
-                    <h3 class="text-3xl mb-4 italic">Botanical Fizz</h3>
-                </div>
-            </div>
+            <!-- Dynamic content loaded via JSON -->
         </div>
     </section>
 
     <!-- Booking / Contact -->
     <section id="booking" class="py-24 px-6">
         <div class="max-w-3xl mx-auto border border-white/10 p-8 md:p-12 bg-white/5">
-            <h2 class="text-4xl italic mb-8 text-center">Inquiry</h2>
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <input type="text" placeholder="NAME" class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition">
-                <input type="email" placeholder="EMAIL" class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition">
-                <textarea placeholder="MESSAGE" class="md:col-span-2 bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] h-32 transition"></textarea>
-                <button type="submit" class="md:col-span-2 btn-gold py-4 font-bold uppercase tracking-widest text-sm">Send Message</button>
+            <h2 class="text-4xl italic mb-8 text-center">Event Inquiry</h2>
+
+            <script type="text/javascript">var submitted=false;</script>
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
+                    onload="if(submitted) { alert('Inquiry Sent! We will contact you soon.'); }"></iframe>
+
+            <form 
+              action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSc_QFSrhQtHZQMMRxK3ZWbhIiNiaYw82HOLCUDg7bkadqeqoA/formResponse" 
+              method="POST" 
+              target="hidden_iframe" 
+              onsubmit="submitted=true;"
+              class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm tracking-widest uppercase"
+            >
+                <div class="flex flex-col gap-2">
+                    <label for="name" class="text-gray-400 text-xs">Full Name</label>
+                    <input type="text" id="name" name="entry.2092238618" required 
+                           class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="email" class="text-gray-400 text-xs">Email Address</label>
+                    <input type="email" id="email" name="entry.1556369182" required 
+                           class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="date" class="text-gray-400 text-xs">Event Date</label>
+                    <input type="date" id="date" name="entry.1753222212" required 
+                           class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition cursor-pointer [color-scheme:dark]">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="attendees" class="text-gray-400 text-xs">Number of Attendees</label>
+                    <div class="relative w-full">
+                        <select id="attendees" name="entry.1896190210" required 
+                                class="w-full bg-transparent border-b border-white/20 py-3 pr-8 outline-none focus:border-[var(--gold)] transition appearance-none cursor-pointer">
+                            <option value="" class="bg-[var(--dark)] text-white" disabled selected hidden></option>
+                            <option value="Under 25" class="bg-[var(--dark)] text-white">Under 25</option>
+                            <option value="25 - 50" class="bg-[var(--dark)] text-white">25 - 50</option>
+                            <option value="51 - 100" class="bg-[var(--dark)] text-white">51 - 100</option>
+                            <option value="101 - 200" class="bg-[var(--dark)] text-white">101 - 200</option>
+                            <option value="More than 200" class="bg-[var(--dark)] text-white">More than 200</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 md:col-span-2">
+                    <div class="flex flex-col gap-2">
+                        <label for="start-time" class="text-gray-400 text-xs">Start Time</label>
+                        <input type="time" id="start-time" name="entry.588393791" required 
+                               class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition cursor-pointer [color-scheme:dark]">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="end-time" class="text-gray-400 text-xs">End Time</label>
+                        <input type="time" id="duration" name="entry.1437648811" required 
+                               class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition cursor-pointer [color-scheme:dark]">
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2 md:col-span-2">
+                    <label for="details" class="text-gray-400 text-xs">Event Details</label>
+                    <textarea id="details" name="entry.479301265" rows="4" required 
+                              class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] h-32 transition resize-none"></textarea>
+                </div>
+
+                <button type="submit" 
+                        class="md:col-span-2 btn-gold py-4 mt-4 font-bold uppercase tracking-widest text-sm w-full">
+                    Send Inquiry
+                </button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 text-center border-t border-white/5">
+    <footer class="py-12 text-center border-t border-white/5 flex flex-col items-center gap-6">
+        <a href="https://www.instagram.com/mixology640/" aria-label="Instagram"
+            class="text-gray-500 hover:text-[var(--gold)] transition">
+            <i data-lucide="instagram" class="w-5 h-5"></i>
+        </a>
         <p class="text-[10px] text-gray-600 uppercase tracking-[0.4em]">&copy; 2024 Mixology640. Drink Responsibly.</p>
     </footer>
 
-    <script>
-        // Initialize Icons
-        lucide.createIcons();
-
-        // --- MOBILE MENU LOGIC ---
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const closeIcon = document.getElementById('close-icon');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        function toggleMenu() {
-            const isOpen = mobileMenu.classList.toggle('active');
-            
-            // Toggle Icons
-            menuIcon.classList.toggle('hidden', isOpen);
-            closeIcon.classList.toggle('hidden', !isOpen);
-            
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = isOpen ? 'hidden' : 'auto';
-        }
-
-        menuToggle.addEventListener('click', toggleMenu);
-
-        // Close menu when clicking a link
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                menuIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            });
-        });
-
-        // --- RECIPE FILTERING ---
-        function filterRecipes(category) {
-            const cards = document.querySelectorAll('.recipe-card');
-            const buttons = document.querySelectorAll('.filter-btn');
-
-            buttons.forEach(btn => {
-                if (btn.innerText.toLowerCase() === category) {
-                    btn.classList.add('text-[var(--gold)]', 'border-b', 'border-[var(--gold)]');
-                    btn.classList.remove('text-gray-500');
-                } else {
-                    btn.classList.remove('text-[var(--gold)]', 'border-b', 'border-[var(--gold)]');
-                    btn.classList.add('text-gray-500');
-                }
-            });
-
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                setTimeout(() => {
-                    if (category === 'all' || card.dataset.spirit === category) {
-                        card.style.display = 'block';
-                        setTimeout(() => card.style.opacity = '1', 50);
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }, 300);
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
+
 </html>
