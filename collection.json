@@ -3,7 +3,7 @@
         "Name": "Irish Espresso Martini",
         "Type": "Vodka",
         "Image": "resources/irish_espresso_martini.png",
-        "Description": "A classic with a modern, Irish twist."
+        "Description": "A classic Espresso Martini with a modern, Irish twist."
     },
     {
         "Name": "Plum Reckoning",
@@ -22,5 +22,29 @@
         "Type": "Tequila",
         "Image": "resources/coconut_margarita.png",
         "Description": "A vibrant pink margarita with a festive coconut-flake rim."
+    },
+    {
+        "Name": "Snowman Hot Chocolate",
+        "Type": "Liqueur",
+        "Image": "resources/snowman_hot_chocolate.png",
+        "Description": "A winter warmer blending hot cocoa with creamy liqueur and a marshmallow snowman."
+    },
+    {
+        "Name": "Festive Paloma",
+        "Type": "Tequila",
+        "Image": "resources/festive_paloma.png",
+        "Description": "A vibrant seasonal twist on the classic Paloma, balancing bright citrus agave with a festive cranberry syrup."
+    },
+    {
+        "Name": "Raspberry Lemon Drop Martini",
+        "Type": "Vodka",
+        "Image": "resources/raspberry_lemon_drop_martini.png",
+        "Description": "A vibrant, sweet-tart classic featuring premium vodka, fresh lemon, and a burst of ripe raspberry."
+    },
+    {
+        "Name": "Santa Clause Margarita",
+        "Type": "Tequila",
+        "Image": "resources/santa_clause_margarita.png",
+        "Description": "A festive seasonal twist on the classic margarita, offering a warm and cheerful holiday spirit in every sip."
     }
 ]

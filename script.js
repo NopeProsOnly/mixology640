@@ -16,7 +16,7 @@ function toggleMenu() {
         menuIcon.classList.replace('opacity-100', 'opacity-0');
         menuIcon.classList.replace('scale-100', 'scale-50');
         menuIcon.classList.replace('rotate-0', 'rotate-90');
-        
+
         closeIcon.classList.replace('opacity-0', 'opacity-100');
         closeIcon.classList.replace('scale-50', 'scale-100');
         closeIcon.classList.replace('-rotate-90', 'rotate-0');
@@ -24,7 +24,7 @@ function toggleMenu() {
         menuIcon.classList.replace('opacity-0', 'opacity-100');
         menuIcon.classList.replace('scale-50', 'scale-100');
         menuIcon.classList.replace('rotate-90', 'rotate-0');
-        
+
         closeIcon.classList.replace('opacity-100', 'opacity-0');
         closeIcon.classList.replace('scale-100', 'scale-50');
         closeIcon.classList.replace('rotate-0', '-rotate-90');
@@ -40,16 +40,16 @@ menuToggle.addEventListener('click', toggleMenu);
 mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
         mobileMenu.classList.remove('active');
-        
+
         // Reset Icons to Menu State
         menuIcon.classList.replace('opacity-0', 'opacity-100');
         menuIcon.classList.replace('scale-50', 'scale-100');
         menuIcon.classList.replace('rotate-90', 'rotate-0');
-        
+
         closeIcon.classList.replace('opacity-100', 'opacity-0');
         closeIcon.classList.replace('scale-100', 'scale-50');
         closeIcon.classList.replace('rotate-0', '-rotate-90');
-        
+
         document.body.style.overflow = 'auto';
     });
 });

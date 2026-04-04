@@ -114,40 +114,37 @@
         <div class="max-w-3xl mx-auto border border-white/10 p-8 md:p-12 bg-white/5">
             <h2 class="text-4xl italic mb-8 text-center">Event Inquiry</h2>
 
-            <script type="text/javascript">var submitted=false;</script>
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
-                    onload="if(submitted) { alert('Inquiry Sent! We will contact you soon.'); }"></iframe>
+            <script type="text/javascript">var submitted = false;</script>
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+                onload="if(submitted) { alert('Inquiry Sent! We will contact you soon.'); }"></iframe>
 
-            <form 
-              action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSc_QFSrhQtHZQMMRxK3ZWbhIiNiaYw82HOLCUDg7bkadqeqoA/formResponse" 
-              method="POST" 
-              target="hidden_iframe" 
-              onsubmit="submitted=true;"
-              class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm tracking-widest uppercase"
-            >
+            <form
+                action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSc_QFSrhQtHZQMMRxK3ZWbhIiNiaYw82HOLCUDg7bkadqeqoA/formResponse"
+                method="POST" target="hidden_iframe" onsubmit="submitted=true;"
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm tracking-widest uppercase">
                 <div class="flex flex-col gap-2">
                     <label for="name" class="text-gray-400 text-xs">Full Name</label>
-                    <input type="text" id="name" name="entry.2092238618" required 
-                           class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition">
+                    <input type="text" id="name" name="entry.2092238618" required
+                        class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition">
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label for="email" class="text-gray-400 text-xs">Email Address</label>
-                    <input type="email" id="email" name="entry.1556369182" required 
-                           class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition">
+                    <input type="email" id="email" name="entry.1556369182" required
+                        class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition">
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label for="date" class="text-gray-400 text-xs">Event Date</label>
-                    <input type="date" id="date" name="entry.1753222212" required 
-                           class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition cursor-pointer [color-scheme:dark]">
+                    <input type="date" id="date" name="entry.1753222212" required
+                        class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition cursor-pointer [color-scheme:dark]">
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label for="attendees" class="text-gray-400 text-xs">Number of Attendees</label>
                     <div class="relative w-full">
-                        <select id="attendees" name="entry.1896190210" required 
-                                class="w-full bg-transparent border-b border-white/20 py-3 pr-8 outline-none focus:border-[var(--gold)] transition appearance-none cursor-pointer">
+                        <select id="attendees" name="entry.1896190210" required
+                            class="w-full bg-transparent border-b border-white/20 py-3 pr-8 outline-none focus:border-[var(--gold)] transition appearance-none cursor-pointer">
                             <option value="" class="bg-[var(--dark)] text-white" disabled selected hidden></option>
                             <option value="Under 25" class="bg-[var(--dark)] text-white">Under 25</option>
                             <option value="25 - 50" class="bg-[var(--dark)] text-white">25 - 50</option>
@@ -155,31 +152,32 @@
                             <option value="101 - 200" class="bg-[var(--dark)] text-white">101 - 200</option>
                             <option value="More than 200" class="bg-[var(--dark)] text-white">More than 200</option>
                         </select>
-                        <i data-lucide="chevron-down" class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
+                        <i data-lucide="chevron-down"
+                            class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4 md:col-span-2">
                     <div class="flex flex-col gap-2">
                         <label for="start-time" class="text-gray-400 text-xs">Start Time</label>
-                        <input type="time" id="start-time" name="entry.588393791" required 
-                               class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition cursor-pointer [color-scheme:dark]">
+                        <input type="time" id="start-time" name="entry.588393791" required
+                            class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition cursor-pointer [color-scheme:dark]">
                     </div>
                     <div class="flex flex-col gap-2">
                         <label for="end-time" class="text-gray-400 text-xs">End Time</label>
-                        <input type="time" id="duration" name="entry.1437648811" required 
-                               class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition cursor-pointer [color-scheme:dark]">
+                        <input type="time" id="duration" name="entry.1437648811" required
+                            class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] transition cursor-pointer [color-scheme:dark]">
                     </div>
                 </div>
 
                 <div class="flex flex-col gap-2 md:col-span-2">
                     <label for="details" class="text-gray-400 text-xs">Event Details</label>
-                    <textarea id="details" name="entry.479301265" rows="4" required 
-                              class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] h-32 transition resize-none"></textarea>
+                    <textarea id="details" name="entry.479301265" rows="4" required
+                        class="bg-transparent border-b border-white/20 py-3 outline-none focus:border-[var(--gold)] h-32 transition resize-none"></textarea>
                 </div>
 
-                <button type="submit" 
-                        class="md:col-span-2 btn-gold py-4 mt-4 font-bold uppercase tracking-widest text-sm w-full">
+                <button type="submit"
+                    class="md:col-span-2 btn-gold py-4 mt-4 font-bold uppercase tracking-widest text-sm w-full">
                     Send Inquiry
                 </button>
             </form>
