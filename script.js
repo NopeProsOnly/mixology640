@@ -58,14 +58,16 @@ mobileLinks.forEach(link => {
 let allRecipes = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('collection.json')
-        .then(response => response.json())
-        .then(data => {
-            allRecipes = data;
-            populateDropdown();
-            renderRecipes(allRecipes);
-        })
-        .catch(error => console.error('Error loading recipes:', error));
+    if (document.getElementById('recipe-grid')) {
+        fetch('collection.json')
+            .then(response => response.json())
+            .then(data => {
+                allRecipes = data;
+                populateDropdown();
+                renderRecipes(allRecipes);
+            })
+            .catch(error => console.error('Error loading recipes:', error));
+    }
 });
 
 function populateDropdown() {

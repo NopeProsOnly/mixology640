@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Mixology640 | The Art of the Pour</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Liquid Background Elements -->
+    <div class="liquid-bg">
+        <div class="blob" style="top: -10%; left: -10%;"></div>
+        <div class="blob" style="bottom: -10%; right: -10%; animation-delay: -5s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav fixed w-full z-[100] px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter uppercase">
+                Mixology<span class="text-[var(--gold)]">640</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex space-x-8 text-xs tracking-[0.3em] uppercase font-semibold">
+                <a href="index.html#recipes" class="hover:text-[var(--gold)] transition">Recipes</a>
+                <a href="#" class="text-[var(--gold)] transition">About</a>
+                <a href="index.html#tutorials" class="hover:text-[var(--gold)] transition">Tutorials</a>
+                <a href="index.html#booking" class="hover:text-[var(--gold)] transition">Booking</a>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button id="menu-toggle"
+                class="md:hidden text-white p-2 relative z-[110] w-10 h-10 flex items-center justify-center group focus:outline-none">
+                <div class="relative w-6 h-6 transform transition-all duration-300 origin-center" id="icon-container">
+                    <i data-lucide="menu" id="menu-icon"
+                        class="absolute inset-0 transition-all duration-300 opacity-100 rotate-0 scale-100"></i>
+                    <i data-lucide="x" id="close-icon"
+                        class="absolute inset-0 transition-all duration-300 opacity-0 -rotate-90 scale-50"></i>
+                </div>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed top-0 left-0 w-full h-screen bg-[#050505] z-[105] flex flex-col items-center justify-center space-y-10 text-center md:hidden">
+            <a href="index.html#recipes" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Recipes</a>
+            <a href="#" class="mobile-link text-3xl font-serif italic text-[var(--gold)]">About</a>
+            <a href="index.html#tutorials" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Tutorials</a>
+            <a href="index.html#booking" class="mobile-link text-3xl font-serif italic hover:text-[var(--gold)]">Booking</a>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="min-h-screen pt-32 pb-24 px-6 relative flex flex-col justify-center">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                
+                <!-- Image Side -->
+                <div class="w-full md:w-1/2 relative group">
+                    <div class="absolute -inset-4 border border-[var(--gold)] opacity-30 group-hover:inset-0 transition-all duration-700 z-0"></div>
+                    <div class="relative z-10 overflow-hidden border border-white/10">
+                        <img src="resources/about-me.png" alt="Mixology640 Head Mixologist" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-1000 grayscale hover:grayscale-0">
+                    </div>
+                </div>
+
+                <!-- Text Side -->
+                <div class="w-full md:w-1/2 mt-12 md:mt-0">
+                    <span class="text-[var(--gold)] tracking-[0.5em] uppercase text-xs mb-4 block">The Craftsman</span>
+                    <h1 class="text-5xl md:text-7xl font-bold mb-8 italic">Behind the Bar</h1>
+                    
+                    <div class="space-y-6 text-gray-400 font-light leading-relaxed text-lg">
+                        <p>
+                            Welcome to Mixology640. Over the past nine years, I’ve built my career on a foundation of precision and high-level service. It's a standard that demands sharp attention to detail, which naturally evolved into my current passion: custom craftsmanship and the art of mixology.
+                        </p>
+                        <p>
+                            To me, making a great drink is about intentional design. It requires more than just following a recipe—it takes a deep understanding of flavor balance, technique, and high-quality ingredients. I apply that same disciplined mindset to everything I do behind the bar, ensuring that what ends up in your glass is nothing short of exceptional.
+                        </p>
+                        <p>
+                            My goal is simple: to provide a distinctly memorable, premium experience for every client. Whether that means designing a bespoke build from the ground up or pouring for guests at a private event, I bring a commitment to quality that you can taste and feel in every single detail.
+                        </p>
+                    </div>
+
+                    <div class="mt-12 flex flex-col sm:flex-row gap-6">
+                        <a href="index.html#recipes" class="border border-white/20 hover:border-[var(--gold)] px-8 py-3 text-center uppercase tracking-widest font-bold text-[10px] sm:text-xs transition backdrop-blur-sm shadow-lg hover:shadow-xl hover:shadow-[var(--gold)]/20">
+                            View Collection
+                        </a>
+                        <a href="index.html#booking" class="btn-gold px-8 py-3 text-center uppercase tracking-widest font-bold text-[10px] sm:text-xs shadow-lg hover:shadow-xl hover:shadow-[var(--gold)]/20">
+                            Work with me
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center border-t border-white/5 flex flex-col items-center gap-6">
+        <a href="https://www.instagram.com/mixology640/" aria-label="Instagram"
+            class="text-gray-500 hover:text-[var(--gold)] transition">
+            <i data-lucide="instagram" class="w-5 h-5"></i>
+        </a>
+        <p class="text-[10px] text-gray-600 uppercase tracking-[0.4em]">&copy; 2024 Mixology640. Drink Responsibly.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
